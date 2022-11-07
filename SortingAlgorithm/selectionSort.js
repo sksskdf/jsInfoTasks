@@ -27,3 +27,4 @@ function selectionSort(arr) {
 
 selectionSort(givenArr);
 selectionSort(givenArr2);
+
