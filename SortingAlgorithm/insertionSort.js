@@ -1,5 +1,6 @@
 const givenArr = [3, 4, 1, 2, 6, 9];
 const givenArr2 = [99, 6, 8, 3, 54, 27, 37, 14, 88, 41, 83, 1, -42, -99, 11];
+const givenArr3 = [5, 4, 3, 2, 1];
 
 function insertionSort(arr) {
     let tempArr = [...arr];
@@ -33,3 +34,4 @@ function insertionSort(arr) {
 
 insertionSort(givenArr);
 insertionSort(givenArr2);
+insertionSort(givenArr3);
