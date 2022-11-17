@@ -50,6 +50,8 @@ arr.copyWithin(target, start, end)은 start부터 end까지 요소를 복사하�
 나중에 배열을 이용해 뭔가를 해야 하는데 방법이 떠오르지 않을 때 이곳으로 돌아와 요약본을 다시 보고 상황에 맞는 메서드를 찾으면 됩니다. 설명에 딸린 예시들이 실제 코드 작성 시 도움이 될 겁니다. 이런 과정을 반복하다 보면 특별한 노력 없이도 메서드를 저절로 외울 수 있습니다.
  */
 
+const { log } = console;
+
 let arr = [1, 2, 15];
 
 arr.sort((a, b) => {
@@ -58,7 +60,7 @@ arr.sort((a, b) => {
   if (a < b) return -1;
 });
 
-console.log(arr);
+log(arr);
 
 /**
  * border-left-width를 borderLeftWidth로 변경하기
@@ -86,7 +88,7 @@ function convertCssProperty(prop) {
   return splittedProp.join(``);
 }
 
-console.log('task1 : ' + convertCssProperty(`border-left-width`));
+log('task1 : ' + convertCssProperty(`border-left-width`));
 
 //solution
 function camelize(str) {
@@ -123,7 +125,7 @@ function filterRange(arr, a, b) {
 
 let givenArr = [5, 3, 8, 1];
 
-console.log('task2 : ' + filterRange(givenArr, 1, 4));
+log('task2 : ' + filterRange(givenArr, 1, 4));
 
 /**
  * 특정 범위에 속하는 요소 찾기(배열 변경하기)
@@ -153,7 +155,7 @@ let givenArr2 = [5, 3, 8, 1];
 
 filterRangeInPlace(givenArr2, 1, 4);
 
-console.log('task3 : ' + givenArr2);
+log('task3 : ' + givenArr2);
 
 /**
  * 내림차순으로 정렬하기
@@ -169,7 +171,7 @@ let givenArr3 = [5, 2, 1, -10, 8];
 
 givenArr3.sort((a, b) => b - a);
 
-console.log(givenArr3);
+log(givenArr3);
 
 /**
  * 배열 복사본을 정렬하기
@@ -194,8 +196,8 @@ let givenArr4 = ["HTML", "JavaScript", "CSS"];
 
 let sorted = copySorted(givenArr4);
 
-console.log( sorted ); // CSS, HTML, JavaScript
-console.log( givenArr4 ); // HTML, JavaScript, CSS (no changes)
+log( sorted ); // CSS, HTML, JavaScript
+log( givenArr4 ); // HTML, JavaScript, CSS (no changes)
 
 /**
  * 확장 가능한 계산기
@@ -254,7 +256,7 @@ function Calculator() {
 }
 
 let calc = new Calculator();
-console.log(calc.calculate(`3 + 7`));
+log(calc.calculate(`3 + 7`));
 
 let powerCalc = new Calculator;
 powerCalc.addMethod("*", (a, b) => a * b);
@@ -262,9 +264,67 @@ powerCalc.addMethod("/", (a, b) => a / b);
 powerCalc.addMethod("**", (a, b) => a ** b);
 
 let result = powerCalc.calculate("2 ** 3");
-console.log( result ); // 8
+log( result ); // 8
 
 /**
- * 확장 가능한 계산기 문제 응용, 심화
- * 
+ * 이름 매핑하기
+중요도: 5
+name을 나타내는 프로퍼티를 가진 객체 user가 담긴 배열이 있습니다. name의 값만 담은 새로운 배열을 만들어주는 코드를 작성해보세요.
+
  */
+
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = users.map(e => e.name);
+
+log( names ); // John, Pete, Mary
+
+/**
+ * 객체 매핑하기
+중요도: 5
+세 개의 프로퍼티 name과 surname, id를 가진 객체 user가 담긴 배열이 있습니다.
+
+name과 surname을 조합해 fullName을 만들고, 이를 이용해 두 개의 프로퍼티 id와 fullName을 가진 객체를 담은 새로운 배열을 반환해주는 코드를 작성해보세요.
+ */
+
+let john2 = { name: "John", surname: "Smith", id: 1 };
+let pete2 = { name: "Pete", surname: "Hunt", id: 2 };
+let mary2 = { name: "Mary", surname: "Key", id: 3 };
+
+let users2 = [ john2, pete2, mary2 ];
+
+let usersMapped = users2.map(e => ({
+    fullName: `${e.name} ${e.surname}`,
+    id : e.id
+}));
+
+log( usersMapped[0].id ) // 1
+log( usersMapped[0].fullName ) // John Smith
+
+/**
+ * 나이를 기준으로 객체 정렬하기
+중요도: 5
+프로퍼티 age가 있는 객체가 담긴 배열이 있습니다. 이 배열을 age를 기준으로 정렬해주는 함수 sortByAge(users)를 만들어보세요.
+ */
+
+let john3 = { name: "John", age: 25 };
+let pete3 = { name: "Pete", age: 30 };
+let mary3 = { name: "Mary", age: 28 };
+
+let arr3 = [ pete, john, mary ];
+
+sortByAge(arr3);
+
+// now: [john, mary, pete]
+log(arr3[0].name); // John
+log(arr3[1].name); // Mary
+log(arr3[2].name); // Pete
+
+function sortByAge(arr) {
+    arr.sort((a, b) => a.age - b.age);
+}
+
