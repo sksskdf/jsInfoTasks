@@ -7,7 +7,6 @@
 
 객체엔 ‘주요’ 자료를, 위크맵과 위크셋엔 ‘부수적인’ 자료를 저장하는 형태로 위크맵과 위크셋을 활용할 수 있습니다. 객체가 메모리에서 삭제되면, (그리고 오로지 위크맵과 위크셋의 키만 해당 객체를 참조하고 있다면) 위크맵이나 위크셋에 저장된 연관 자료들 역시 메모리에서 자동으로 삭제됩니다.
  */
-
 let john = { name : `john` };
 let arr = [ john ];
 john = null;
@@ -49,7 +48,7 @@ readMessages.add(messages[1]);
 
 readMessages.add(messages[0]);
 
-alert("message 0은 읽음 상태인가요?: " + readMessages.has(messages[0]));
+console.log("message 0은 읽음 상태인가요?: " + readMessages.has(messages[0]));
 
 messages.shift();
 
