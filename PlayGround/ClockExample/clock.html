@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+        @keyframes fadein {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50rem;
+        }
+
+        .clockBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: cadetblue;
+            width: 60rem;
+            height: 15rem;
+            border-radius: 3rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+            animation-name: fadein;
+            animation-duration: 2s;
+            opacity: 1;
+        }
+
+        .clockBox > h1 {
+            font-size: 5.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="clockBox">
+        <h1 id="time"></h2>
+    </div>
+    <script type="text/javascript">
+        class Clock {
+            constructor({template}) {
+                this.template = template;
+            }
+
+            render() {
+                let date = new Date();
+
+                let hours = date.getHours();
+                hours = hours < 10 ? '0' + hours : hours;
+
+                let mins = date.getMinutes();
+                mins = mins < 10 ? '0' + mins : mins;
+
+                let secs = date.getSeconds();
+                secs = secs < 10 ? '0' + secs : secs;
+
+                let output = this.template
+                    .replace('h', hours)
+                    .replace('m', mins)
+                    .replace('s', secs);
+
+                return output;
+            }
+
+            start() {
+                return this.render();
+            }
+        }
+        const template = "h  :  m  :  s";
+        const clock = new Clock({ template });
+
+        const time = document.querySelector(`#time`);
+
+        time.innerHTML = clock.start();
+        setInterval(() => {
+            time.innerHTML = clock.start();
+        }, 1000);
+    </script>
+</body>
+</html>
