@@ -18,27 +18,27 @@ Array.from(obj[, mapFn, thisArg])을 사용하면 이터러블이나 유사 배�
  */
 
 let iter = {
-    from: 1,
-    to: 5,
-    [Symbol.iterator]() {
-        return {
-            current: this.from,
-            last: this.to,
-            next() {
-                if (this.current <= this.last) {
-                    return {done: false, value: this.current++};
-                } else {
-                    return {done: true};
-                }
-            }
+  from: 1,
+  to: 5,
+  [Symbol.iterator]() {
+    return {
+      current: this.from,
+      last: this.to,
+      next() {
+        if (this.current <= this.last) {
+          return { done: false, value: this.current++ };
+        } else {
+          return { done: true };
         }
-    }
-}
+      },
+    };
+  },
+};
 
 let iter1 = iter;
 iter1.from = 1;
 iter1.to = 5;
 
 for (let i of iter1) {
-    log(i);
+  log(i);
 }
