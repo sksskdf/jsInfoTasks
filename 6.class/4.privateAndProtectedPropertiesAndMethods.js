@@ -34,3 +34,32 @@ protected 필드는 _로 시작합니다. _은 자바스크립트에서 지원�
 private 필드는 #로 시작하며, 자바스크립트에서 지원하는 문법입니다. #로 시작하는 필드는 해당 필드가 정의된 클래스 내부에서만 접근 가능합니다.
 모든 브라우저에서 private 필드를 지원하진 않지만 폴리필을 구현하여 사용할 수 있습니다.
 */
+
+class CoffeeMachine {
+  constructor(power) {
+    this._power = power;
+  }
+
+  getPower() {
+    return this._power;
+  }
+}
+
+class NewCoffeeMachine extends CoffeeMachine {
+  constructor(power, waterAmount) {
+    super(power);
+    this.waterAmount = waterAmount;
+  }
+
+  setPower(power) {
+    this._power = power;
+  }
+}
+
+let coffeMachine = new CoffeeMachine(10);
+console.log(coffeMachine.getPower());
+console.log(coffeMachine._power);
+
+let newCoffeeMachine = new NewCoffeeMachine(10, 100);
+console.log(newCoffeeMachine.getPower());
+newCoffeeMachine.setPower(20);
