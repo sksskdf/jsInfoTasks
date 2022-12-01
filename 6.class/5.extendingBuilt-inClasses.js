@@ -60,3 +60,4 @@ alert(filteredArr.isEmpty()); // Error: filteredArr.isEmpty is not a function
 
 예를 들어봅시다. Array와 Date는 모두 Object를 상속받기 때문에 두 클래스의 인스턴스에선 Object.prototype에 구현된 메서드를 사용할 수 있습니다. 그런데 Array.[[Prototype]]와 Date.[[Prototype]]은 Object를 참조하지 않기 때문에 Array.keys()나 Date.keys()같은 정적 메서드를 인스턴스에서 사용할 수 없습니다.
 */
+
