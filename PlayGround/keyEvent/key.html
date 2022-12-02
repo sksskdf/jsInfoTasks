@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: antiquewhite;
+            position: absolute;
+        }
+
+        body {
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle"></div>
+    <script type="text/javascript">
+        const circle = document.querySelector(`.circle`);
+        let move = 5;
+        document.body.addEventListener('keydown', e => {
+            switch (e.code) {
+                case `ArrowRight`: {
+                    circle.style.left = `${move}px`;
+                    break;
+                } case `ArrowLeft`: {
+                    circle.style.right = `${move}px`;
+                    break;
+                } case `ArrowUp`: {
+                    circle.style.top = `${move}px`;
+                    break;
+                } case `ArrowDown`: {
+                    circle.style.bottom = `${move}px`;
+                }
+            }
+            move += 5;
+
+        });
+
+        function clickEvent(event) {
+            console.dir(event);
+        }
+        document.body.addEventListener('click', clickEvent);
+    </script>
+</body>
+
+</html>
