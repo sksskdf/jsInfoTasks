@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="phone" type="text" placeholder="전화번호">
+</body>
+<script>
+    phone.onkeydown = event => {
+        let reg = /\d/;
+        if (!event.key.match(reg) && event.code !== 'Backspace') {
+            event.preventDefault();
+            return;
+        }
+        if (event.code !== 'Backspace') {
+            if (event.target.value == '010' || event.target.value.length == 8) {
+                let c = `${event.target.value}-`;
+                event.target.value = c;
+            }
+        }
+
+    }
+</script>
+
+</html>
